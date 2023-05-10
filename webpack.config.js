@@ -1,19 +1,21 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
+const clientPath = path.join(__dirname, 'client');
+const serverPublicPath = path.join(__dirname, 'server', 'public');
 
 module.exports = {
-  entry: './src/index.jsx',
+  entry: clientPath,
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: serverPublicPath,
   },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist'),
+      directory: path.join(__dirname, 'server/public'),
     },
     client: {
       logging: 'error',
@@ -24,7 +26,7 @@ module.exports = {
   mode: 'development',
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src/index.html'),
+      template: path.join(__dirname, 'client/index.html'),
     }),
     new MiniCssExtractPlugin(),
   ],

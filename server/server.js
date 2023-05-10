@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
     .then(dbResponse => {
       res.send(dbResponse.rows);
     }) */
-    res.status(200).send('<h1>Hello</h1>');
+    res.status(200).send('<h1>Hello World</h1>');
 })
 
 app.listen(3000, () => {

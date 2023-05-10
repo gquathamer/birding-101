@@ -1,3 +1,4 @@
 {
-  "src/**/*.{js,jsx}": ["eslint --fix", "prettier --write"]
+  "client/**/*.{js,jsx}": ["eslint --fix", "prettier --write"],
+  "server/server.js": ["eslint --fix, pretter --write"]
 }

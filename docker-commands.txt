@@ -89,4 +89,4 @@ docker run -it --network todo-app nicolaka/netshoot
 
 docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d -p 5432:5432 postgres
 
-docker run --name some-postgres -dp 5432:5432 -e POSTGRES_PASSWORD=password -v postgres-data-2:/var/lib/postgresql/data -v ${pwd}/init.sql:/docker-entrypoint-initdb.d/init.sql postgres
+docker run --name ebird-species -dp 5432:5432 -e POSTGRES_PASSWORD=password -v postgres-data-2:/var/lib/postgresql/data -v ${pwd}/init.sql:/docker-entrypoint-initdb.d/init.sql postgres

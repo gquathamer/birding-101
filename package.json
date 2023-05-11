@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "dev": "webpack serve",
+    "dev": "nodemon ./server/server.js",
     "prepare": "husky install"
   },
   "keywords": [],
@@ -36,6 +36,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "mini-css-extract-plugin": "^2.7.5",
+    "nodemon": "^2.0.22",
     "prettier": "^2.8.8",
     "prop-types": "^15.8.1",
     "webpack": "^5.82.0",

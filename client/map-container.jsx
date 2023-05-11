@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 export default function Map() {
   const [data, setData] = useState([]);
+  const [testData, setTestData] = useState([]);
 
   useEffect(() => {
     const ebirdRecentObservationsURL = new URL(
@@ -19,27 +20,41 @@ export default function Map() {
         setData(response);
       })
       .catch(err => console.error(err));
+
+    fetch('/api/test')
+      .then(response => response.json())
+      .then(testData => {
+        setTestData(testData);
+      })
+      .catch(err => console.error(err));
   }, []);
 
   return (
-    <MapContainer
-      center={[39.67988240776321, -105.07969112565975]}
-      zoom={13}
-      scrollWheelZoom={true}
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {data.map((obs, idx) => {
-        return (
-          <Marker key={idx} position={[obs.lat, obs.lng]}>
-            <Popup>
-              {`${obs.howMany} ${obs.comName} spotted at ${obs.locName}`}
-            </Popup>
-          </Marker>
-        );
-      })}
-    </MapContainer>
+    <>
+      <div>
+        {testData.map((testData, idx) => {
+          return <p key={idx}>{testData.PRIMARY_COM_NAME}</p>;
+        })}
+      </div>
+      <MapContainer
+        center={[39.67988240776321, -105.07969112565975]}
+        zoom={8}
+        scrollWheelZoom={true}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        {data.map((obs, idx) => {
+          return (
+            <Marker key={idx} position={[obs.lat, obs.lng]}>
+              <Popup>
+                {`${obs.howMany} ${obs.comName} spotted at ${obs.locName}`}
+              </Popup>
+            </Marker>
+          );
+        })}
+      </MapContainer>
+    </>
   );
 }

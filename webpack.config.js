@@ -13,7 +13,11 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  devServer: {
+  watch: true,
+  watchOptions: {
+    ignored: /node_modules/,
+  },
+  /* devServer: {
     static: {
       directory: path.join(__dirname, 'server/public'),
     },
@@ -22,7 +26,7 @@ module.exports = {
     },
     compress: true,
     port: 9000,
-  },
+  }, */
   mode: 'development',
   plugins: [
     new HtmlWebpackPlugin({

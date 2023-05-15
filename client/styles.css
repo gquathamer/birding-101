@@ -2,3 +2,29 @@
   width: 50vw;
   height: 50vh;
 }
+
+form {
+  position: relative;
+}
+
+#suggestions {
+  position: absolute;
+  left: 57px;
+  max-width: 200px;
+  z-index: 1001;
+  background-color: white;
+  padding-right: 1rem;
+  display: none;
+}
+
+#suggestions p {
+  margin-top: 0;
+}
+
+#suggestions p:hover {
+  background-color: aqua;
+}
+
+input:focus + #suggestions {
+  display: block;
+}

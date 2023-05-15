@@ -1,0 +1,15 @@
+{
+  "watch": [
+    ".env",
+    "server/",
+    "webpack.config.js",
+    "client/"
+  ],
+  "ignore": [
+    "server/public/"
+  ],
+  "events": {
+    "start": "node -e 'console.clear()'",
+    "restart": "node -e 'console.clear()'"
+  }
+}

@@ -29,7 +29,7 @@ app.get('/api/test', (req, res) => {
     .catch(err => console.error(err))
 });
 
-app.get('/api/species', (req, res) => {
+app.post('/api/species', (req, res) => {
   let { species } = req.body;
   species = species.charAt(0).toUpperCase() + species.slice(1);
   const params = [species];

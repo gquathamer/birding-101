@@ -1,11 +1,14 @@
-import React from "react";
+import { React, useState } from 'react';
 import Map from './map-container.jsx';
+import SpeciesForm from './form.jsx';
 
 export default function App() {
+  const [observations, setObservations] = useState([]);
+
   return (
     <>
-      <h1>hello</h1>
-      <Map></Map>
+      <SpeciesForm setObservations={setObservations}></SpeciesForm>
+      <Map observations={observations}></Map>
     </>
-  )
+  );
 }

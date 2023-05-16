@@ -188,7 +188,6 @@ function SpeciesForm(_ref) {
       htmlFor: "speciesInput",
       children: "Species :"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_auto_input__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      id: "speciesInput",
       setSpeciesObj: setSpeciesObj
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
       type: "submit",

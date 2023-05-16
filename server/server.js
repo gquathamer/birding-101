@@ -36,7 +36,7 @@ app.post('/api/species', (req, res) => {
   const sql = `
     SELECT "SPECIES_CODE","PRIMARY_COM_NAME"
     FROM "ebird-species"
-    WHERE "PRIMARY_COM_NAME" LIKE ($1)||'%'
+    WHERE "PRIMARY_COM_NAME" LIKE '%'||($1)||'%'
     LIMIT 10
   `;
   db.query(sql, params)

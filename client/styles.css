@@ -14,7 +14,7 @@ form {
   z-index: 1001;
   background-color: white;
   padding-right: 1rem;
-  display: none;
+  display: block;
 }
 
 #suggestions p {
@@ -25,6 +25,6 @@ form {
   background-color: aqua;
 }
 
-input:focus + #suggestions {
+/* input:focus + #suggestions {
   display: block;
-}
+} */

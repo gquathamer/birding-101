@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from 'react';
+import PropType from 'prop-types';
 
-export default function AutoInput() {
+export default function AutoInput({ setSpeciesObj }) {
   const [inputValue, setInputValue] = useState('');
   const [suggestedSpecies, setSuggestedSpecies] = useState([]);
 
@@ -23,6 +24,11 @@ export default function AutoInput() {
       .catch(err => console.error(err));
   }, [inputValue]);
 
+  function handleClick(speciesObj) {
+    setInputValue(speciesObj.PRIMARY_COM_NAME);
+    setSpeciesObj(speciesObj);
+  }
+
   return (
     <>
       <input
@@ -33,10 +39,7 @@ export default function AutoInput() {
       <div id="suggestions">
         {suggestedSpecies.map((speciesObj, idx) => {
           return (
-            <p
-              key={idx}
-              onClick={() => setInputValue(speciesObj.PRIMARY_COM_NAME)}
-            >
+            <p key={idx} onClick={() => handleClick(speciesObj)}>
               {speciesObj.PRIMARY_COM_NAME}
             </p>
           );
@@ -45,3 +48,7 @@ export default function AutoInput() {
     </>
   );
 }
+
+AutoInput.propTypes = {
+  setSpeciesObj: PropType.func,
+};

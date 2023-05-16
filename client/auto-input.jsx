@@ -5,8 +5,7 @@ export default function AutoInput() {
   const [suggestedSpecies, setSuggestedSpecies] = useState([]);
 
   useEffect(() => {
-    console.log(inputValue);
-    if (inputValue.length < 3) {
+    if (inputValue.length < 4) {
       setSuggestedSpecies([]);
       return;
     }

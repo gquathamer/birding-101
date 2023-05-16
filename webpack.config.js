@@ -28,6 +28,7 @@ module.exports = {
     port: 9000,
   }, */
   mode: 'development',
+  devtool: 'source-map',
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'client/index.html'),

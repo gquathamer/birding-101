@@ -4,6 +4,7 @@ import PropType from 'prop-types';
 export default function AutoInput({ setSpeciesObj }) {
   const [inputValue, setInputValue] = useState('');
   const [suggestedSpecies, setSuggestedSpecies] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   useEffect(() => {
     if (inputValue.length < 4) {
@@ -27,6 +28,13 @@ export default function AutoInput({ setSpeciesObj }) {
   function handleClick(speciesObj) {
     setInputValue(speciesObj.PRIMARY_COM_NAME);
     setSpeciesObj(speciesObj);
+    setShowSuggestions(false);
+  }
+
+  function handleBlur(e) {
+    if (!e.relatedTarget) {
+      setShowSuggestions(false);
+    }
   }
 
   return (
@@ -34,17 +42,21 @@ export default function AutoInput({ setSpeciesObj }) {
       <input
         type="text"
         onChange={e => setInputValue(e.target.value)}
+        onFocus={() => setShowSuggestions(true)}
+        onBlur={e => handleBlur(e)}
         value={inputValue}
       ></input>
-      <div id="suggestions">
-        {suggestedSpecies.map((speciesObj, idx) => {
-          return (
-            <p key={idx} onClick={() => handleClick(speciesObj)}>
-              {speciesObj.PRIMARY_COM_NAME}
-            </p>
-          );
-        })}
-      </div>
+      {showSuggestions && (
+        <div tabIndex="-1" id="suggestions">
+          {suggestedSpecies.map((speciesObj, idx) => {
+            return (
+              <p key={idx} onClick={() => handleClick(speciesObj)}>
+                {speciesObj.PRIMARY_COM_NAME}
+              </p>
+            );
+          })}
+        </div>
+      )}
     </>
   );
 }

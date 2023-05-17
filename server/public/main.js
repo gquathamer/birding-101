@@ -82,6 +82,10 @@ function AutoInput(_ref) {
     _useState4 = _slicedToArray(_useState3, 2),
     suggestedSpecies = _useState4[0],
     setSuggestedSpecies = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState6 = _slicedToArray(_useState5, 2),
+    showSuggestions = _useState6[0],
+    setShowSuggestions = _useState6[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (inputValue.length < 4) {
       setSuggestedSpecies([]);
@@ -106,6 +110,12 @@ function AutoInput(_ref) {
   function handleClick(speciesObj) {
     setInputValue(speciesObj.PRIMARY_COM_NAME);
     setSpeciesObj(speciesObj);
+    setShowSuggestions(false);
+  }
+  function handleBlur(e) {
+    if (!e.relatedTarget) {
+      setShowSuggestions(false);
+    }
   }
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
@@ -113,8 +123,15 @@ function AutoInput(_ref) {
       onChange: function onChange(e) {
         return setInputValue(e.target.value);
       },
+      onFocus: function onFocus() {
+        return setShowSuggestions(true);
+      },
+      onBlur: function onBlur(e) {
+        return handleBlur(e);
+      },
       value: inputValue
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    }), showSuggestions && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      tabIndex: "-1",
       id: "suggestions",
       children: suggestedSpecies.map(function (speciesObj, idx) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {

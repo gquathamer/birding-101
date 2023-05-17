@@ -13,6 +13,10 @@ form {
   position: relative;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .leaflet-container {
   width: 50vw;
   height: 50vh;

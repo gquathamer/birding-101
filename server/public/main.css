@@ -6,7 +6,7 @@
 }
 
 body {
-  font: 16px Arial;
+  font-family: 'Quicksand',sans-serif;
 }
 
 form {
@@ -15,6 +15,10 @@ form {
 
 button:hover {
   cursor: pointer;
+}
+
+.heading {
+  font-family: 'Roboto', sans-serif;
 }
 
 .leaflet-container {

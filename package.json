@@ -2,11 +2,11 @@
   "name": "birding101",
   "version": "1.0.0",
   "description": "A web application for beginning bird enthusiasts to keep track of bird species spotted",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "dev": "nodemon ./server/server.js",
+    "dev": "nodemon .",
     "prepare": "husky install"
   },
   "keywords": [],

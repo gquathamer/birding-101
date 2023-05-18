@@ -2,8 +2,7 @@
   "watch": [
     ".env",
     "server/",
-    "webpack.config.js",
-    "client/"
+    "webpack.config.js"
   ],
   "ignore": [
     "server/public/"

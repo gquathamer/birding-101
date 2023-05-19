@@ -1,6 +1,5 @@
 const express = require('express');
 const pg = require('pg');
-// const path = require('path');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 

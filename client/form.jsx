@@ -27,7 +27,7 @@ export default function SpeciesForm({ setObservations }) {
     <form onSubmit={handleSubmit}>
       <label htmlFor="speciesInput">Species :</label>
       <AutoInput setSpeciesObj={setSpeciesObj}></AutoInput>
-      <button type="submit">Submit</button>
+      <button type="submit">Submit Button</button>
     </form>
   );
 }

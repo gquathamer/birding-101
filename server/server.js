@@ -1,6 +1,8 @@
 const express = require('express');
 const pg = require('pg');
-const path = require('path');
+// const path = require('path');
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
 
 const db = new pg.Pool({
   host: 'localhost',
@@ -11,8 +13,14 @@ const db = new pg.Pool({
 })
 
 const app = express();
+const config = require('../webpack.config.js');
+const compiler = webpack(config);
 
-app.use(express.static(path.join(__dirname, `public`)));
+app.use(webpackDevMiddleware(compiler, {
+  publicPath: config.output.publicPath,
+}));
+
+app.use(require("webpack-hot-middleware")(compiler));
 
 app.use(express.json());
 

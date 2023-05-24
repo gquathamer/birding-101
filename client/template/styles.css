@@ -18,6 +18,10 @@ button:hover {
   font-family: 'Roboto', sans-serif;
 }
 
+.center {
+  margin: 0 auto;
+}
+
 .leaflet-container {
   width: 50vw;
   height: 50vh;

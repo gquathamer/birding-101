@@ -27,6 +27,10 @@ button:hover {
   height: 50vh;
 }
 
+#or .navbar {
+  background-color: #ED7D3A;
+}
+
 #suggestions {
   position: absolute;
   left: 66px;

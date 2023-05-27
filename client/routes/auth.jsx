@@ -1,11 +1,12 @@
 import React from 'react';
-import Navigation from '../components/auth-form';
+import Navigation from '../components/navigation';
+import AuthForm from '../components/auth-form';
 
 export default function Auth() {
   return (
     <>
       <Navigation></Navigation>
-      <h1>Test</h1>
+      <AuthForm></AuthForm>
     </>
   );
 }

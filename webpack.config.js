@@ -50,7 +50,7 @@ module.exports = {
   devtool: 'source-map',
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'client/index.html'),
+      template: path.join(__dirname, 'client/template/index.html'),
     }),
     new MiniCssExtractPlugin(),
     new webpack.HotModuleReplacementPlugin(),

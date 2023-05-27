@@ -3,33 +3,23 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const clientPath = path.join(__dirname, 'client');
 const serverPublicPath = path.join(__dirname, 'server', 'public');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
-  entry: clientPath,
-  output: {
-    filename: 'main.js',
-    path: serverPublicPath,
-  },
+  mode: 'development',
+  entry: [
+    clientPath,
+    'webpack-hot-middleware/client?timeout=1000'
+  ],
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  devServer: {
-    static: {
-      directory: path.join(__dirname, 'server/public'),
-    },
-    client: {
-      logging: 'error',
-    },
-    compress: true,
-    port: 9000,
+  output: {
+    filename: 'main.js',
+    path: serverPublicPath,
+    publicPath: '/'
   },
-  mode: 'development',
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'client/index.html'),
-    }),
-    new MiniCssExtractPlugin(),
-  ],
   module: {
     rules: [
       {
@@ -45,6 +35,7 @@ module.exports = {
                 {
                   runtime: 'automatic',
                 },
+                'react-refresh/babel'
               ],
             ],
           },
@@ -56,4 +47,13 @@ module.exports = {
       },
     ],
   },
+  devtool: 'source-map',
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'client/index.html'),
+    }),
+    new MiniCssExtractPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new ReactRefreshWebpackPlugin()
+  ],
 };

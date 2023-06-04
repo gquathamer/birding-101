@@ -10,8 +10,8 @@ export default function Root() {
   return (
     <>
       <Navigation></Navigation>
-      <SpeciesForm setObservations={setObservations}></SpeciesForm>
       <LocationForm></LocationForm>
+      <SpeciesForm setObservations={setObservations}></SpeciesForm>
       <Map observations={observations}></Map>
     </>
   );

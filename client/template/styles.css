@@ -8,6 +8,8 @@ body {
 
 form {
   position: relative;
+  max-width: 33%;
+  outline: 1px dashed black;
 }
 
 button:hover {

@@ -1,7 +1,7 @@
 import { React } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { PropTypes } from 'prop-types';
-import { L } from 'leaflet';
+import L from 'leaflet';
 
 export default function Map({ observations }) {
   let bounds;
@@ -9,11 +9,12 @@ export default function Map({ observations }) {
     ? (bounds = L.latLngBounds(
         observations.map(coord => [coord.lat, coord.lng]),
       ))
-    : (bounds = L.latLngBounds(
-        L.latLng(39.37052088851672, -105.6426156179245),
-        L.latLng(40.01445119362242, -104.66481653795064),
-      ));
+    : (bounds = L.latLngBounds([
+        [39.37, -105.642],
+        [40.014, -104.664],
+      ]));
 
+  L.latLngBounds();
   return (
     <>
       <MapContainer bounds={bounds} zoom={8} scrollWheelZoom={true}>

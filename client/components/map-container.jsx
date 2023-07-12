@@ -1,7 +1,12 @@
 import { React } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, useMap, TileLayer, Marker, Popup } from 'react-leaflet';
 import { PropTypes } from 'prop-types';
 import L from 'leaflet';
+
+function MapHook({ bounds }) {
+  const map = useMap();
+  map.fitBounds(bounds);
+}
 
 export default function Map({ observations }) {
   let bounds;
@@ -14,14 +19,14 @@ export default function Map({ observations }) {
         [40.014, -104.664],
       ]));
 
-  L.latLngBounds();
   return (
     <>
-      <MapContainer bounds={bounds} zoom={8} scrollWheelZoom={true}>
+      <MapContainer zoom={8} scrollWheelZoom={true}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        <MapHook bounds={bounds}></MapHook>
         {observations.length &&
           observations.map((obs, idx) => {
             return (
